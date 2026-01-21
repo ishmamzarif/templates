@@ -1,5 +1,5 @@
 ## templates
-topic-wise templates for cse108 algorithms
+topic-wise templates for cse208 algorithms
 
 ## use the following template before adding problems
 /*
