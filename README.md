@@ -1,7 +1,7 @@
-# templates
+## templates
 topic-wise templates for cse108 algorithms
 
-# use the following template before adding problems
+## use the following template before adding problems
 /*
 author
 */
