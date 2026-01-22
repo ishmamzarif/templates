@@ -16,5 +16,5 @@ problem statement (briefly)
 
 problem solution
 
-<bold>check sample codes for reference</bold>
+**check sample codes for reference**
 
