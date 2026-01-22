@@ -2,23 +2,34 @@
 topic-wise templates for cse208 algorithms
 
 ## use the following template before adding problems
-/*
-author
+/* 
+Author: Ishmam
+*/
+
+/* 
+Problem Link:
+Not provided
+*/
+
+/* 
+Problem Statement:
+Find the second shortest path between two nodes in a weighted graph.
 */
 
 /*
-problem link (if any)
+Core Idea:
+Use Dijkstra algorithm with two distance arrays.
 */
 
 /*
-problem statement (briefly)
+Time Complexity:
+O(E log V)
 */
 
---<br>
-problem solution
---<br>
-
-## sample code
+/*
+Space Complexity:
+O(V)
+*/
 
 ```cpp
 /* 
