@@ -14,11 +14,13 @@ problem link (if any)
 problem statement (briefly)
 */
 
+--<br>
 problem solution
+--<br>
 
-**check sample codes for reference**
+## sample code
 
-<code>
+```cpp
 /* 
 ishmam
 */
@@ -99,5 +101,5 @@ int main() {
     return 0;
 }
 
-</code>
+```
 
