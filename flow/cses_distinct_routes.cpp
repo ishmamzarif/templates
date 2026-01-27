@@ -1,14 +1,22 @@
 /* 
-A game consists of n rooms and m teleporters. 
-At the beginning of each day, you start in room 1 and you have to reach room n.
-You can use each teleporter at most once during the game.
+ https://cses.fi/problemset/task/1711
+*/
+
+/*
+ A game consists of n rooms and m teleporters. 
+ At the beginning of each day, you start in room 1 and you have to reach room n.
+ You can use each teleporter at most once during the game.
  How many days can you play if you choose your routes optimally?
 */
 
 /* 
-use max-flow
-once you find an augmenting path, print it inside edmond-karp
-use stack to print in reverse
+ use max-flow
+ once you find an augmenting path, DO NOT PRINT IT INSIDE AUGMENTING PATH
+ because augmenting paths may contain residual edges -> they ARE NOT paths from S->T
+ 
+ finish max-flow
+ after that, run dfs/bfs and print paths and flow[node]-- along that path
+ repeat until no more paths can be found
 */
 
 #include <bits/stdc++.h>
