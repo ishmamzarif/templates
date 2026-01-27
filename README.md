@@ -2,9 +2,11 @@
 topic-wise templates for cse208 algorithms
 
 ## use the following template before adding problems
-/* <br> problem statement <br> */
-/* <br> problem link (if any) <br> */
-/* <br> solution <br> */
+/* problem statement */   
+<br>
+/* problem link (if any) */   
+<br>
+/* solution  */
 <br>
 example:
 ```cpp
