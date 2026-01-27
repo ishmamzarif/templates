@@ -11,6 +11,9 @@ direct max flow
 there might be multiple paralles edges
 just increment the capacity
 but dont add duplicate to the adj_list -> check before with find
+
+or you can also use vector<set<int>> in the adj_list instead of vector<vector<int>>
+better find time complexity
 */
 
 #include <bits/stdc++.h>
