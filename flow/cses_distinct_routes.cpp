@@ -1,5 +1,8 @@
 /* 
-https://cses.fi/problemset/task/1711
+A game consists of n rooms and m teleporters. 
+At the beginning of each day, you start in room 1 and you have to reach room n.
+You can use each teleporter at most once during the game.
+ How many days can you play if you choose your routes optimally?
 */
 
 /* 

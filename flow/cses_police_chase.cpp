@@ -1,5 +1,8 @@
 /* 
-https://cses.fi/problemset/task/1695/
+Kaaleppi has just robbed a bank and is now heading to the harbor. 
+However, the police wants to stop him by closing some streets of the city.
+What is the minimum number of streets that should be closed 
+    so that there is no route between the bank and the harbor?
 */
 
 /*
