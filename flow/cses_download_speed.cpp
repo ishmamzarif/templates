@@ -1,9 +1,12 @@
 /* 
-https://cses.fi/problemset/task/1694
+Consider a network consisting of n computers and m connections. 
+Each connection specifies how fast a computer can send data to another computer.
+Kotivalo wants to download some data from a server. 
+What is the maximum speed he can do this, using the connections in the network?
 */
 
 /* 
-direct max flow easy
+direct max flow
 
 there might be multiple paralles edges
 just increment the capacity

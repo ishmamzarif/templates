@@ -1,8 +1,14 @@
 /* 
-https://cses.fi/problemset/task/1696
+There are n boys and m girls in a school. 
+Next week a school dance will be organized. 
+A dance pair consists of a boy and a girl, and there are k potential pairs.
+Your task is to find out the maximum number of dance pairs 
+    and show how this number can be achieved.
+
+The boys are numbered 1,2,...,n, and the girls are numbered 1,2,...,m.
 
 maximum bipartite matching
-total N + M edges hobe
+extra edges will be N + M edges
 0..N-1 boys
 N..M-1 girls
 N + M source -> connect to all boys
