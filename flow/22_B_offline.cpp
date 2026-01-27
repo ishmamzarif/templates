@@ -6,6 +6,20 @@
 
     normal max-flow problem
     create the graph, run max-flow
+
+    input the mice 1..m
+    input the holes m + 1...m + h
+    source = 0
+    sink = (m + h) + 1
+    n = total = m + h + 2
+
+    connect all mice to source
+    connect all holes to sink
+
+    connect each pair of mice and hole using w(m[j], h[j]) = euclidean_dist(m[i], h[j])
+    (add only if the dist <= r)
+    
+    run max_flow
 */
 
 
