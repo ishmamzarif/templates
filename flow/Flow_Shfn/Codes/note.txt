@@ -1,2 +1,0 @@
-template e add edge function
- ar adjacency list e dhukanor part tao function e dhukabo
