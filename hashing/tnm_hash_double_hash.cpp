@@ -302,5 +302,20 @@ public:
 
 
 int main(){
+
+    // the class has three functions
+        // bool hashfunc1 hashfunc2;--- must be set to make sure which hashfunction to use
+
+    // pair<bool,int> insert(const key& x, const value& v)
+        // bool is 
+
+
+
+    // pair<bool,int> remove(const key& x)
+
+
+    // pair<bool,pair<value, int>> search(const key& x)
+
+
     return 0;
 }   
