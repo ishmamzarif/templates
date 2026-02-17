@@ -252,4 +252,37 @@ public:
 
 int main(){
 
+    // the class has three functions
+        // bool hashfunc1 hashfunc2;--- must be set to make sure which hashfunction to use
+
+    // pair<bool,int> insert(const key& x, const value& v)
+        // every insertion takes input key-value pair
+        // using key -- uses the hash function-- gets the list
+        // searches for the key-- whether the key is present before-- doesn't count this collision if not found
+        // if found then only counts it
+        // push_back the pair
+        // updates the load_factor
+        // returns bool--- for insertion success or not
+        // returns int--- for the amount of collision
+
+
+    // pair<bool,int> remove(const key& x)
+        // it takes the key as input-- uses the hash function-- gets the list
+        // searches for the key-- whether the key is present before
+        // if found, then it removes the key-value pair--- updates the load_factor(only with certain conditions met)
+        // if not found, returns false and the collision number
+        // returns bool--- for insertion success or not
+        // returns int--- for the amount of collision
+
+
+    // pair<bool,pair<value, int>> search(const key& x)
+        // it takes the key as input-- uses the hash function-- gets the list
+        // bool --- whether the code was able to find it-- key present or not
+        // value --- what value is there for the key -- if not present then dummy
+        // int --- how many collisions did it take to find the key
+
+    
+    // helper functions
+        // isPrime, nextPrime, prevPrime--- all takes integer input
+
 }
