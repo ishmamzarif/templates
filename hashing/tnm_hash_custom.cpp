@@ -6,6 +6,7 @@ bool hashfunc1;
 bool hashfunc2;
 int c1, c2;
 
+
 bool isPrime(int n){
     if(n <= 1){
         return  false;
