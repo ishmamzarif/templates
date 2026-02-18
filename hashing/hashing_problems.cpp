@@ -172,7 +172,7 @@ int subarraySum(vector<int>& nums, int k) {
 
 /*
 Majority Element
-Return the element that appears more than ⌊ n/2 ⌋ times.
+Return the element that appears more than floor(n/2) times.
 */
 
 int majorityElement(vector<int>& nums) {
@@ -520,6 +520,9 @@ Number of Good Pairs
 Count pairs (i,j) where nums[i] == nums[j], i < j.
 */
 
+// alternate solution -> map everyones freq
+// for every num such that freq (k) > 1, ans += k * (k + 1) / 2
+
 int numIdenticalPairs(vector<int>& nums) {
     ChainingHashTable<int,int> freq;
     int ans = 0;
@@ -595,6 +598,7 @@ int longestSubarraySumK(vector<int>& nums, int k) {
         int hits = 0;
 
         auto r = firstIndex.search(prefix - k, hits);
+        
         if(r.first)
             best = max(best, i - r.second);
 
@@ -707,7 +711,195 @@ int minWindowLength(string s, string t) {
 }
 
 
+/*
+Count triplets (i,j,k) where sum = 0.
+Hashing inside two-sum.
+*/
+
+int countTriplets(vector<int>& nums) {
+    int n = nums.size(), ans = 0;
+
+    for(int i = 0; i < n; i++) {
+        ChainingHashTable<int,bool> seen;
+
+        for(int j = i + 1; j < n; j++) {
+            int need = -(nums[i] + nums[j]);
+            int hits = 0;
+
+            if(seen.search(need, hits).first)
+                ans++;
+
+            seen.insert(nums[j], true);
+        }
+    }
+
+    return ans;
+}
+
+
+/*
+Length of smallest subarray containing all distinct elements.
+*/
+
+int smallestDistinctWindow(vector<int>& nums) {
+    ChainingHashTable<int,bool> all;
+
+    for(int x : nums)
+        all.insert(x, true);
+
+    int total = 0;
+    for(int i = 0; i < all.tableSize; i++)
+        for(auto &kv : all.table[i])
+            total++;
+
+    ChainingHashTable<int,int> freq;
+
+    int l = 0, formed = 0, best = INT_MAX;
+
+    for(int r = 0; r < nums.size(); r++) {
+        int hits = 0;
+        auto rr = freq.search(nums[r], hits);
+
+        if(!rr.first || rr.second == 0) formed++;
+
+        freq.insert(nums[r], rr.first ? rr.second + 1 : 1);
+
+        while(formed == total) {
+            best = min(best, r - l + 1);
+
+            auto rl = freq.search(nums[l], hits);
+            freq.insert(nums[l], rl.second - 1);
+
+            if(rl.second - 1 == 0) formed--;
+            l++;
+        }
+    }
+
+    return best;
+}
+
+/*
+Group Shifted Strings
+Strings belong together if shifting letters makes them equal.
+Return number of groups.
+*/
+
+int countShiftGroups(vector<string>& strs) {
+    ChainingHashTable<string,bool> groups;
+
+    for(string s : strs) {
+        string key = "";
+
+        for(int i = 1; i < s.size(); i++) {
+            int diff = (s[i] - s[i-1] + 26) % 26;
+            key += char('a' + diff);
+        }
+
+        int hits = 0;
+        if(!groups.search(key, hits).first)
+            groups.insert(key, true);
+    }
+
+    return groups.getNumElements();
+}
 
 
 
+/*
+Count unique pairs with absolute difference = k.
+*/
 
+int countKDiffPairs(vector<int>& nums, int k) {
+    ChainingHashTable<int,bool> seen;
+    ChainingHashTable<int,bool> used;
+
+    int ans = 0;
+
+    for(int x : nums) {
+        int hits = 0;
+
+        if(seen.search(x - k, hits).first &&
+           !used.search(x - k, hits).first) {
+            ans++;
+            used.insert(x - k, true);
+        }
+
+        if(seen.search(x + k, hits).first &&
+           !used.search(x, hits).first) {
+            ans++;
+            used.insert(x, true);
+        }
+
+        seen.insert(x, true);
+    }
+
+    return ans;
+}
+
+
+
+/*
+Check if array can be paired so sum of each pair divisible by k.
+*/
+
+bool canArrange(vector<int>& nums, int k) {
+    ChainingHashTable<int,int> freq;
+
+    for(int x : nums) {
+        int rem = ((x % k) + k) % k;
+
+        int hits = 0;
+        auto r = freq.search(rem, hits);
+
+        if(r.first) freq.insert(rem, r.second + 1);
+        else freq.insert(rem, 1);
+    }
+
+    for(int i = 0; i < freq.tableSize; i++) {
+        for(auto &kv : freq.table[i]) {
+            int rem = kv.first;
+            int cnt = kv.second;
+
+            if(rem == 0) {
+                if(cnt % 2) return false;
+            }
+            else {
+                int hits = 0;
+                auto r = freq.search(k - rem, hits);
+
+                if(!r.first || r.second != cnt)
+                    return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+
+
+bool isValidSudoku(vector<vector<char>>& board) {
+    ChainingHashTable<string,bool> seen;
+
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            char c = board[i][j];
+            if (c == '.') continue;
+
+            string rowKey = "row" + to_string(i) + c;
+            string colKey = "col" + to_string(j) + c;
+            string boxKey = "box" + to_string(i/3) + to_string(j/3) + c;
+
+            int hits = 0;
+            if (seen.search(rowKey, hits).first ||
+                seen.search(colKey, hits).first ||
+                seen.search(boxKey, hits).first)
+                return false;
+
+            seen.insert(rowKey, true);
+            seen.insert(colKey, true);
+            seen.insert(boxKey, true);
+        }
+    }
+    return true;
+}
